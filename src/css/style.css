@@ -1,0 +1,47 @@
+/* line 7, ../sass/style.sass */
+.ad-skin-window-wrap {
+  position: relative !important;
+  overflow: hidden;
+}
+/* line 11, ../sass/style.sass */
+.ad-skin-window-wrap .ad-skin-window {
+  position: relative;
+  display: block;
+}
+/* line 15, ../sass/style.sass */
+.ad-skin-window-wrap .ad-btn {
+  display: none;
+  padding: 10px;
+  font-size: 12px;
+  color: white;
+  text-shadow: 1px 1px black;
+  font-family: helvetica, arial, sans-serif;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* line 34, ../sass/style.sass */
+.ad-skin-window-wrap .ad-transition-height {
+  -webkit-transition-property: height;
+  -moz-transition-property: height;
+  -o-transition-property: height;
+  transition-property: height;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+/* line 38, ../sass/style.sass */
+.ad-skin-click-area {
+  width: 100%;
+  display: block;
+}

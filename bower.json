@@ -1,0 +1,8 @@
+{
+  "name": "skin-window-template",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~1.7.2",
+    "yepnope": "~1.5.4"
+  }
+}

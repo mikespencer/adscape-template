@@ -1,0 +1,40 @@
+@import "compass/reset/utilities"
+@import "compass/css3"
+
+.ad-skin-window-wrap
+  @import "compass/reset/utilities"
+
+.ad-skin-window-wrap
+  position: relative !important
+  overflow: hidden
+
+  .ad-skin-window
+    position: relative
+    display: block
+
+  .ad-btn
+    display: none
+    padding: 10px
+    font-size: 12px
+    color: #fff
+    text-shadow: 1px 1px #000
+    font-family: helvetica, arial, sans-serif
+    cursor: pointer
+    position: absolute
+    top: 0
+    right: 0
+    z-index: 10
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: -moz-none
+    -ms-user-select: none
+    user-select: none
+
+  .ad-transition-height
+    +transition-property(height)
+    +transition-duration(0.5s)
+
+.ad-skin-click-area
+  width: 100%
+  display: block
