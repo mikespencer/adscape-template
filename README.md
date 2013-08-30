@@ -1,6 +1,6 @@
 #Skin Window Template
 
-An ad template for DFP.
+Ad template for DFP.
 
 ##Devlopment
 

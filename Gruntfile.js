@@ -83,8 +83,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           banner: '<!-- AD ID: %eaid! -->' +
-            ('' ? '\n<!-- BUG ID:  -->' : '') +
-            '<!-- 1x1 |  - skin-window-template -->\n' +
+            '<!-- skin-window-template -->' +
             '\n\n',
           process: {
             data: {
@@ -339,7 +338,7 @@ module.exports = function (grunt) {
     });
 
     grunt.file.write(data.src, $.html());
-  })
+  });
 
   grunt.registerTask('default', ['build', 'test', 'server']);
 
