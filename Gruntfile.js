@@ -363,8 +363,6 @@ module.exports = function (grunt) {
     'absolute:dist'
   ]);
 
-  grunt.registerTask('moveToProd', ['copy:moveToProd']);
-
   grunt.registerTask('server', [
     //'clean',
     //'concurrent:server',
