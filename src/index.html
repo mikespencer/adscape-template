@@ -21,7 +21,7 @@
 </div>
 
 <!--build:css(src) css/style.min.css-->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css" />
 <!--endbuild-->
 
 <script>
@@ -34,6 +34,9 @@
     'use strict';
 
     $(function(){
+
+      // Uncomment this in DFP - wierd issue with above stylesheet reference not working... Remove this reference from above
+      // $('head').append('<link rel="stylesheet" type="text/css" href="http://css.washingtonpost.com/wp-srv/ad/skin-window/dist/css/style.min.css" />');
 
       wpAd.skinWindowConfig = {
         adid: parseInt('%eaid!', 10) || false,
