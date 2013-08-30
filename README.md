@@ -4,7 +4,7 @@ An ad template for DFP.
 
 ##Devlopment
 
-Work out of the src folder.
+To install dependencies, run `npm install && bower install`.
 
 run `grunt build` to build the project. Outputs to dist/.
 
