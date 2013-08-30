@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QUnit Tests</title>
+  <link rel="stylesheet" href="resources/qunit/qunit/qunit.css">
+  <script src="../src/js/lib/Modernizr.min.js"></script>
+</head>
+<body>
+
+  <div id="shell" style="background-color:#eee;width:1000px;margin:0 auto;padding:10px">
+    <h1>Some title</h1>
+    <div id="slug_pushdown" class="ad-skin-window"></div>
+    <div style="padding-top:30px;">
+      <p>Curabitur blandit tempus porttitor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+
+      <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+      <p>Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+
+      <p>Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+      <p>Curabitur blandit tempus porttitor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+
+      <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+      <p>Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+
+      <p>Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div>
+  </div>
+
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+
+
+  <script src="resources/jquery/jquery.js"></script>
+  <script>
+    var wpAd = wpAd || {};
+    (function($){
+      'use strict';
+
+      $(function(){
+
+        wpAd.skinWindowConfig = {
+          adid: parseInt('%eaid!', 10) || false,
+          imageURL: '../dist/img/bg.jpg',
+          clickTracker: '',
+          clickTrackerEsc: '',
+          clickTag: 'http://www.example.com',
+          colHeight: '60px',
+          expHeight: '468px',
+          skinTopMargin: '30px',
+          timeOpen: 7000,
+          auto: true,
+          bodyBgColor: '#ffffff',
+
+          autoExpDelay: 1000,
+          expandLanguage: 'Click to Expand',
+          closeLanguage: 'Close [x]',
+          fullWidthColPushdown: true,
+
+          impressionPixels: [],
+          trackExpClick: '',
+          trackCloseClick: '',
+
+          pageContainer: '#shell',
+          pushdownContainer: '#slug_pushdown',
+          pageStyleOverrides: {},
+          animSpeed: 500
+        };
+
+        wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
+
+      });
+
+    })(window.jQuery);
+  </script>
+  <script src="../src/js/main.js"></script>
+  <script src="resources/qunit/qunit/qunit.js"></script>
+  <script src="tests.js"></script>
+
+</body>
+</html>

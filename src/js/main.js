@@ -66,14 +66,21 @@ wpAd.SkinWindow = (function($){
       }
       if(this.config.auto){
         this.autoExpTimer = setTimeout(function(){
-          root.expand();
+          root.expand(false);
           root.setCloseTimer();
         }, root.config.autoExpDelay);
       } else {
         this.$expandButton.show(0);
       }
+
+      var l =this.config.impressionPixels.length;
+      if(l){
+        while(l--){
+          this.addPixel(this.config.impressionPixels[l]);
+        }
+      }
     },
-    expand: function(){
+    expand: function(clicked){
       if(!this.config.fullWidthColPushdown){
         this.styleFullWidthPushdownContainer();
       }
@@ -90,6 +97,10 @@ wpAd.SkinWindow = (function($){
         this.$pushdownInner.stop(true,true).animate({
           height: this.config.expHeight
         }, this.config.animSpeed);
+      }
+
+      if(this.config.trackExpClick && clicked){
+        this.addPixel(this.config.trackExpClick);
       }
 
       this.$expandButton.hide(0);
@@ -145,11 +156,11 @@ wpAd.SkinWindow = (function($){
       var root = this;
 
       this.$closeButton = $('<span class="ad-btn">' + this.config.closeLanguage + '</span>').on('click', function(){
-        root.collapse();
+        root.collapse(true);
       });
 
       this.$expandButton = $('<span class="ad-btn">' + this.config.expandLanguage + '</span>').on('click', function(){
-        root.expand();
+        root.expand(true);
       });
 
       this.$pushdownContainer.append(this.$closeButton).append(this.$expandButton);
@@ -158,10 +169,10 @@ wpAd.SkinWindow = (function($){
     setCloseTimer: function(){
       var root = this;
       this.closeTimer = setTimeout(function(){
-        root.collapse();
+        root.collapse(false);
       }, this.config.timeOpen);
     },
-    collapse: function(){
+    collapse: function(clicked){
       var root = this;
 
       var callback = function(){
@@ -186,6 +197,21 @@ wpAd.SkinWindow = (function($){
           height: this.config.colHeight
         }, this.config.animSpeed, callback);
       }
+
+      if(clicked && this.config.trackCloseClick){
+        this.addPixel(this.config.trackCloseClick);
+      }
+    },
+    addPixel: function(src){
+      $('<img />').attr({
+        src: src.replace(/\[timestamp\]|%n|\[ord\]|\[random\]/i, Math.floor(Math.random() * 1E7)),
+        width: '1',
+        height: '1',
+        alt: 'pixel'
+      }).css({
+        border: '0',
+        display: 'none'
+      }).appendTo(this.$pushdownContainer);
     }
   };
 

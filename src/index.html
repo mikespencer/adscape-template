@@ -37,31 +37,33 @@
 
       wpAd.skinWindowConfig = {
         adid: parseInt('%eaid!', 10) || false,
-        imageURL: 'img/bg.jpg',
+        imageURL: '<%= imageURL %>',
         clickTracker: '<%= clickTracker %>',
         clickTrackerEsc: '<%= clickTrackerEsc %>',
         clickTag: '<%= clickTag %>',
-        colHeight: '60px',
-        expHeight: '468px',
-        skinTopMargin: '30px',
-        timeOpen: 7000,
-        auto: true,
-        bodyBgColor: '#ffffff',
+        colHeight: '<%= colHeight %>',
+        expHeight: '<%= expHeight %>',
+        skinTopMargin: '<%= skinTopMargin %>',
+        timeOpen: <%= timeOpen %>,
+        auto: <%= auto %>,
+        bodyBgColor: '<%= bodyBgColor %>',
 
-        autoExpDelay: 1000,
-        expandLanguage: 'Click to Expand',
-        closeLanguage: 'Close [x]',
-        fullWidthColPushdown: true,
+        autoExpDelay: <%= autoExpDelay %>,
+        expandLanguage: '<%= expandLanguage %>',
+        closeLanguage: '<%= closeLanguage %>',
+        fullWidthColPushdown: <%= fullWidthColPushdown %>,
 
-        impressionPixels: [],
-        trackExpClick: '',
-        trackCloseClick: '',
+        impressionPixels: ['<%= impressionPixels %>'],
+        trackExpClick: '<%= trackExpClick %>',
+        trackCloseClick: '<%= trackCloseClick %>',
 
-        pageContainer: '#shell',
-        pushdownContainer: '#slug_pushdown',
-        pageStyleOverrides: {},
-        animSpeed: 500
+        pageContainer: '<%= pageContainer %>',
+        pushdownContainer: '<%= pushdownContainer %>',
+        pageStyleOverrides: {<%= pageStyleOverrides %>},
+        animSpeed: <%= animSpeed %>
       };
+
+      <%= JSOverrides %>
 
       wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
 

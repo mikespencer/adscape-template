@@ -71,21 +71,12 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      libs: {
+      moveToProd: {
         expand: true,
         dot: true,
-        cwd: '<%= yeoman.app %>/js/lib/',
-        dest: '<%= yeoman.dist %>/js/lib/',
-        src: [
-          'ypenope/yepope.1.5.4-min.js'
-        ]
-      },
-      styles: {
-        expand: true,
-        dot: true,
-        cwd: '<%= yeoman.app %>/css',
-        dest: '<%= yeoman.dist %>/css',
-        src: '**/*.css'
+        cwd: '<%= yeoman.dist %>',
+        dest: '~/wp-ad-scripts/skin-window/dist',
+        src: '**/*'
       }
     },
     concat: {
@@ -97,9 +88,32 @@ module.exports = function (grunt) {
             '\n\n',
           process: {
             data: {
+              adid: parseInt('%eaid!', 10) || false,
+              imageURL: '[%BackgroundImage%]',
               clickTracker: '%%CLICK_URL_UNESC%%',
               clickTrackerEsc: '%%CLICK_URL_ESC%%',
-              clickTag: '%%DEST_URL%%'
+              clickTag: '%%DEST_URL%%',
+              colHeight: '[%CollapsedHeight%]px',
+              expHeight: '[%ExpandedHeight%]px',
+              skinTopMargin: '[%SkinTopMargin%]px',
+              timeOpen: '[%AutoTimeOpen%]',
+              auto: '[%Auto%]',
+              bodyBgColor: '[%BodyBackgroundColor%]',
+
+              autoExpDelay: '[%AutoExpandDelay%]',
+              expandLanguage: '[%ExpandLanguage%]',
+              closeLanguage: '[%CloseLanguage%]',
+              fullWidthColPushdown: '[%FullWidthCollapsedPushdown%]',
+
+              impressionPixels: ['[%3rdPartyImpressionPixel%]'],
+              trackExpClick: '[%3rdPartyExpandClickPixel%]',
+              trackCloseClick: '[%3rdPartyCollapseClickPixel%]',
+
+              pageContainer: '[%PageContainerSelector%]',
+              pushdownContainer: '[%PushdownContainerSelector%]',
+              pageStyleOverrides: '[%PageStyleOverrides%]',
+              animSpeed: '[%AnimationSpeedJS%]',
+              JSOverrides: '[%JSOverrides%]'
             }
           }
         },
@@ -113,9 +127,31 @@ module.exports = function (grunt) {
           footer: '\n\n</body>\n</html>',
           process: {
             data: {
+              imageURL: 'img/bg.jpg',
               clickTracker: '',
               clickTrackerEsc: '',
-              clickTag: 'http://www.example.com'
+              clickTag: 'http://www.example.com',
+              colHeight: '60px',
+              expHeight: '468px',
+              skinTopMargin: '30px',
+              timeOpen: '7000',
+              auto: true,
+              bodyBgColor: '#ffffff',
+
+              autoExpDelay: 1000,
+              expandLanguage: 'Click to Expand',
+              closeLanguage: 'Close [x]',
+              fullWidthColPushdown: true,
+
+              impressionPixels: '',
+              trackExpClick: '',
+              trackCloseClick: '',
+
+              pageContainer: '#shell',
+              pushdownContainer: '#slug_pushdown',
+              pageStyleOverrides: '',
+              animSpeed: 500,
+              JSOverrides: ''
             }
           }
         },
@@ -149,7 +185,7 @@ module.exports = function (grunt) {
           src: [
             '<%= yeoman.dist %>/js/main.min.js',
             '<%= yeoman.dist %>/css/style.min.css',
-            '<img/**/*.{jpg,jpeg,gif,png}',
+            'img/**/*.{jpg,jpeg,gif,png}',
             'fonts/**/*.{eot,svg,ttf,woff}'
           ]
         }]
@@ -159,9 +195,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'src/',
+          cwd: '<%= yeoman.app %>/',
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'dist/'
+          dest: '<%= yeoman.dist %>/'
         }]
       }
     },
@@ -246,7 +282,7 @@ module.exports = function (grunt) {
       }
     },
     qunit: {
-      all: ['test/**/*.html']
+      index: ['test/index.html']
     },
     absolute: {
       dist: {
@@ -305,7 +341,7 @@ module.exports = function (grunt) {
     grunt.file.write(data.src, $.html());
   })
 
-  grunt.registerTask('default', ['jshint:src', 'build', 'server']);
+  grunt.registerTask('default', ['build', 'test', 'server']);
 
   grunt.registerTask('test', ['qunit']);
 
@@ -320,12 +356,14 @@ module.exports = function (grunt) {
     'htmlmin',
     'copy:dist',
     //'imagemin',
-    'rev:dist',
+    //'rev:dist',
     'usemin',
     'concat:dist',
     'concat:dev',
     'absolute:dist'
   ]);
+
+  grunt.registerTask('moveToProd', ['copy:moveToProd']);
 
   grunt.registerTask('server', [
     //'clean',
