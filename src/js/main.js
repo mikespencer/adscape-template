@@ -20,8 +20,8 @@ wpAd.SkinWindow = (function($){
     auto: false,
     autoExpDelay: 1000,
     impressionPixels: [],
-    trackExpClick: '',
-    trackCloseClick: '',
+    trackExpClick: [],
+    trackCloseClick: [],
     pageContainer: '#shell',
     pushdownContainer: '#slug_pushdown',
     expHeight: '468px',
@@ -73,7 +73,7 @@ wpAd.SkinWindow = (function($){
         this.$expandButton.show(0);
       }
 
-      var l =this.config.impressionPixels.length;
+      var l = this.config.impressionPixels.length;
       if(l){
         while(l--){
           this.addPixel(this.config.impressionPixels[l]);
@@ -99,8 +99,11 @@ wpAd.SkinWindow = (function($){
         }, this.config.animSpeed);
       }
 
-      if(this.config.trackExpClick && clicked){
-        this.addPixel(this.config.trackExpClick);
+      var l = this.config.trackExpClick.length;
+      if(l && clicked){
+        while(l--){
+          this.addPixel(this.config.trackExpClick[l]);
+        }
       }
 
       this.$expandButton.hide(0);
@@ -193,13 +196,16 @@ wpAd.SkinWindow = (function($){
         setTimeout(callback, this.config.animSpeed);
 
       } else {
-        this.$pushdownInner.stop().animate({
+        this.$pushdownInner.stop(true, true).animate({
           height: this.config.colHeight
         }, this.config.animSpeed, callback);
       }
 
-      if(clicked && this.config.trackCloseClick){
-        this.addPixel(this.config.trackCloseClick);
+      var l = this.config.trackCloseClick.length;
+      if(l && clicked){
+        while(l--){
+          this.addPixel(this.config.trackCloseClick[l]);
+        }
       }
     },
     addPixel: function(src){
