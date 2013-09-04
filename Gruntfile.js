@@ -405,4 +405,20 @@ module.exports = function (grunt) {
     'watch'
   ]);
 
+  grunt.registerTask('push', 'Copy files to production build', function(target){
+    if(target === 'prod'){
+      var prod = '~/wp-ad-scripts/skin-window/dist';
+      //clean out old files
+      var preClean = 'rm -rf ' + prod;
+      //copy the ./dist dir
+      var copy = 'cp -R ./dist ' + prod;
+      //remove unnecessary files
+      var postClean = 'rm -rf ' + prod + '/*.html ' + prod + '/img';
+
+      console.log('Copying ./dist to ~/wp-ad-scripts/skin-window/dist');
+
+      exec([preClean, copy, postClean].join(' && '));
+    }
+  });
+
 };
