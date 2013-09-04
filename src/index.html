@@ -37,6 +37,8 @@
 
     $('body', d).append('<link rel="stylesheet" type="text/css" href="<%= urls.css %>" />');
 
+    // SEEMS TO BE A RACE CONDITION HERE IN FIF
+    // may need to wait for $(w).load ?
     $(function(){
 
       w.wpAd.skinWindowConfig = {

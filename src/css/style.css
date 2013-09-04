@@ -45,3 +45,8 @@
   width: 100%;
   display: block;
 }
+
+/* line 43, ../sass/style.sass */
+#slug_pushdown .adnoDisplay {
+  visibility: visible !important;
+}
