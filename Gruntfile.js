@@ -87,6 +87,10 @@ module.exports = function (grunt) {
             '\n\n',
           process: {
             data: {
+              urls: {
+                css: 'http://css.washingtonpost.com/wp-srv/ad/skin-window/dist/css/style.min.css',
+                js: 'http://js.washingtonpost.com/wp-srv/ad/skin-window/dist/js/main.min.js'
+              },
               adid: parseInt('%eaid!', 10) || false,
               imageURL: '[%BackgroundImage%]',
               clickTracker: '%%CLICK_URL_UNESC%%',
@@ -126,6 +130,10 @@ module.exports = function (grunt) {
           footer: '\n\n</body>\n</html>',
           process: {
             data: {
+              urls: {
+                css: 'css/style.min.css',
+                js: 'js/main.min.js'
+              },
               imageURL: 'img/bg.jpg',
               clickTracker: '',
               clickTrackerEsc: '',
@@ -210,9 +218,26 @@ module.exports = function (grunt) {
     },
     uglify: {
       options: {
-        //sourceMap: '<%= yeoman.dist %>/js/main.map.js',
+        banner: '/* Built <%= grunt.template.today("mm-dd-yyyy") %> */\n',
+        sourceMap: '<%= yeoman.dist %>/js/main.map.js'
         //sourceMapRoot: '<%= yeoman.dist %>/',
         //sourceMappingURL: 'main.map.js'
+      },
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/js/main.min.js': ['<%= yeoman.app %>/js/lib/Modernizr.min.js', '<%= yeoman.app %>/js/main.js']
+        }
+      }
+    },
+    cssmin: {
+      options: {
+        banner: '/* Built <%= grunt.template.today("mm-dd-yyyy") %> */',
+        report: 'gzip'
+      },
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/css/style.min.css': ['<%= yeoman.app %>/css/style.css']
+        }
       }
     },
     compass: {
@@ -227,6 +252,9 @@ module.exports = function (grunt) {
         'jshint:src',
         'compass:dist',
         'imagemin:dist'
+        //'uglify',
+        //'cssmin',
+        //'htmlmin'
       ]
     },
     watch: {
@@ -337,6 +365,12 @@ module.exports = function (grunt) {
       }
     });
 
+    //removing testing div:
+    $('#shell').remove();
+
+    //remove testing elements:
+    $('.dev-element').remove();
+
     grunt.file.write(data.src, $.html());
   });
 
@@ -348,15 +382,15 @@ module.exports = function (grunt) {
     //'jshint:src',
     'clean:dist',
     'concurrent:dist',
-    'useminPrepare',
-    'concat',
+    //'useminPrepare',
+    //'concat',
     'uglify',
     'cssmin',
     'htmlmin',
     'copy:dist',
     //'imagemin',
     //'rev:dist',
-    'usemin',
+    //'usemin',
     'concat:dist',
     'concat:dev',
     'absolute:dist'

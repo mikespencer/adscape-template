@@ -20,25 +20,26 @@
   </div>
 </div>
 
-<!--build:css(src) css/style.min.css-->
-<link rel="stylesheet" href="css/style.css" />
-<!--endbuild-->
+<script class="dev-element" src="http://js.washingtonpost.com/wpost/js/combo?token=20121010232000&c=true&m=true&context=eidos&r=/jquery-1.7.1.js"></script>
 
 <script>
-  window.jQuery || document.write('<script src="http://js.washingtonpost.com/wpost/js/combo?token=20121010232000&c=true&m=true&context=eidos&r=/jquery-1.7.1.js"><\/script>');
-</script>
-
-<script>
-  var wpAd = wpAd || {};
-  (function($){
+  (function($, w, d){
     'use strict';
+
+    if(!$){return;}
+
+    w.wpAd = w.wpAd || {};
+
+    var s = d.createElement('script');
+    s.type = 'text/javascript';
+    s.src = '<%= urls.js %>';
+    d.body.appendChild(s);
+
+    $('body', d).append('<link rel="stylesheet" type="text/css" href="<%= urls.css %>" />');
 
     $(function(){
 
-      // Uncomment this in DFP - wierd issue with above stylesheet reference not working... Remove this reference from above
-      // $('head').append('<link rel="stylesheet" type="text/css" href="http://css.washingtonpost.com/wp-srv/ad/skin-window/dist/css/style.min.css" />');
-
-      wpAd.skinWindowConfig = {
+      w.wpAd.skinWindowConfig = {
         adid: parseInt('%eaid!', 10) || false,
         imageURL: '<%= imageURL %>',
         clickTracker: '<%= clickTracker %>',
@@ -68,14 +69,9 @@
 
       <%= JSOverrides %>
 
-      wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
+      w.wpAd.skinWindow = new w.wpAd.SkinWindow(w.wpAd.skinWindowConfig);
 
     });
 
-  })(window.jQuery);
+  })((window.jQuery || parent.jQuery), parent.window, parent.document);
 </script>
-
-<!--build:js js/main.min.js-->
-<script src="js/lib/Modernizr.min.js"></script>
-<script src="js/main.js" async></script>
-<!--endbuild-->
