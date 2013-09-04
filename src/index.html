@@ -23,25 +23,28 @@
 <script class="dev-element" src="http://js.washingtonpost.com/wpost/js/combo?token=20121010232000&c=true&m=true&context=eidos&r=/jquery-1.7.1.js"></script>
 
 <script>
-  (function($, w, d){
+
+  var wpAd = wpAd || {};
+
+  (function($){
     'use strict';
 
     if(!$){return;}
 
-    w.wpAd = w.wpAd || {};
+    wpAd = wpAd || {};
 
-    var s = d.createElement('script');
+    var s = document.createElement('script');
     s.type = 'text/javascript';
     s.src = '<%= urls.js %>';
-    d.body.appendChild(s);
+    document.body.appendChild(s);
 
-    $('body', d).append('<link rel="stylesheet" type="text/css" href="<%= urls.css %>" />');
+    $('body').append('<link rel="stylesheet" type="text/css" href="<%= urls.css %>" />');
 
     // SEEMS TO BE A RACE CONDITION HERE IN FIF
     // may need to wait for $(w).load ?
     $(function(){
 
-      w.wpAd.skinWindowConfig = {
+      wpAd.skinWindowConfig = {
         adid: parseInt('%eaid!', 10) || false,
         imageURL: '<%= imageURL %>',
         clickTracker: '<%= clickTracker %>',
@@ -71,9 +74,9 @@
 
       <%= JSOverrides %>
 
-      w.wpAd.skinWindow = new w.wpAd.SkinWindow(w.wpAd.skinWindowConfig);
+      wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
 
     });
 
-  })((window.jQuery || parent.jQuery), parent.window, parent.document);
+  })(window.jQuery);
 </script>
