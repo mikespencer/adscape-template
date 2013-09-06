@@ -67,7 +67,8 @@ module.exports = function (grunt) {
             '.htaccess',
             'img/{,*/}*.{webp,gif}',
             'css/fonts/*',
-            'js/main.js'
+            'js/main.js',
+            'js/lib/Modernizr.min.js'
           ]
         }]
       },
@@ -364,9 +365,6 @@ module.exports = function (grunt) {
         $(this).attr('href', newHref);
       }
     });
-
-    //removing testing div:
-    $('#shell').remove();
 
     //remove testing elements:
     $('.dev-element').remove();
