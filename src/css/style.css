@@ -1,60 +1,74 @@
-/*
-Syntax error: Invalid CSS after "*\/": expected identifier, was ""
-        on line 64 of /Users/spencerma/repos/adscape-template/src/sass/style.sass
+/* line 8, ../sass/style.sass */
+.ad-adscape-wrap {
+  position: relative !important;
+  overflow: hidden;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px;
+}
+/* line 14, ../sass/style.sass */
+.ad-adscape-wrap .message.expanded, .ad-adscape-wrap .message.collapsed {
+  display: none;
+}
+/* line 18, ../sass/style.sass */
+.ad-adscape-wrap.expanded .ad-btn.collapse {
+  display: inline !important;
+}
+/* line 20, ../sass/style.sass */
+.ad-adscape-wrap.expanded .message.expanded {
+  display: inherit;
+}
+/* line 24, ../sass/style.sass */
+.ad-adscape-wrap.collapsed .ad-btn.expand {
+  display: inline !important;
+}
+/* line 26, ../sass/style.sass */
+.ad-adscape-wrap.collapsed .message.collapsed {
+  display: inherit;
+}
+/* line 29, ../sass/style.sass */
+.ad-adscape-wrap .ad-adscape {
+  position: relative;
+  display: block;
+}
+/* line 33, ../sass/style.sass */
+.ad-adscape-wrap .ad-btn {
+  display: none;
+  padding: 10px;
+  font-size: 12px;
+  color: white;
+  text-shadow: 1px 1px black;
+  font-family: helvetica, arial, sans-serif;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* line 52, ../sass/style.sass */
+.ad-adscape-wrap .ad-transition-height {
+  -webkit-transition-property: height;
+  -moz-transition-property: height;
+  -o-transition-property: height;
+  transition-property: height;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
 
-Backtrace:
-/Users/spencerma/repos/adscape-template/src/sass/style.sass:64
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1145:in `expected'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1083:in `expected'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1065:in `expr!'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:659:in `reference_combinator'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:653:in `combinator'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:645:in `_selector'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:623:in `selector_comma_sequence'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/parser.rb:1064:in `expr!'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/scss/static_parser.rb:20:in `parse_selector'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:314:in `visit_rule'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/tree/root_node.rb:20:in `render'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/engine.rb:315:in `_render'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.10/lib/sass/engine.rb:262:in `render'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/update_project.rb:45:in `perform'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:44:in `call'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/bin/compass:23:in `load'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/bin/compass:23:in `<main>'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/bin/ruby_noexec_wrapper:14:in `eval'
-/Users/spencerma/.rvm/gems/ruby-2.0.0-p195/bin/ruby_noexec_wrapper:14:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"*/\": expected identifier, was \"\"\A         on line 64 of /Users/spencerma/repos/adscape-template/src/sass/style.sass"; }
+/* line 56, ../sass/style.sass */
+.ad-skin-click-area {
+  width: 100%;
+  display: block;
+}
+
+/*#slug_pushdown
+ * .adnoDisplay
+ *   display: block !important
+ *   visibility: visible !important */
