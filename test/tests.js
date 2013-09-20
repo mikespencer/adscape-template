@@ -46,5 +46,5 @@ test('imageURL', function(){
 });
 
 test('rendered', function(){
-  ok($('#slug_pushdown').children().length, 'rendered');
+  ok($('.ad-adscape-wrap').children().length, 'rendered');
 });

@@ -23,7 +23,7 @@ wpAd.Adscape = (function($){
     trackExpClick: [],
     trackCloseClick: [],
     pageContainer: '#shell',
-    pushdownContainer: '#slug_pushdown',
+    adscapeContainer: '#slug_pushdown',
     expHeight: '468px',
     colHeight: '60px',
     bodyBgColor: '#ffffff',
@@ -33,7 +33,7 @@ wpAd.Adscape = (function($){
     expandedMessageCSS: {},
     skinTopMargin: '30px',
     pageStyleOverrides: {},
-    fullWidthColPushdown: false,
+    fullWidthColAdscape: false,
     animSpeed: 500,
     expandLanguage: 'Click to Expand',
     closeLanguage: 'Close [x]'
@@ -55,17 +55,19 @@ wpAd.Adscape = (function($){
     },
     setPageElements: function(){
       this.$pageContainer = $(this.config.pageContainer);
-      this.$pushdownContainer = $(this.config.pushdownContainer).empty().addClass('ad-adscape-wrap');
-      this.$pushdownInner = $('<a class="ad-adscape" href="' + this.config.clickTrack + this.config.clickTag + '" target="_blank"></a>').appendTo(this.$pushdownContainer);
+      //this.$adscapeContainer = $(this.config.adscapeContainer).empty().addClass('ad-adscape-wrap');
+      this.$adscapeContainer = $('<div class="ad-adscape-wrap"></div>');
+      $(this.config.adscapeContainer).css({display: 'none'}).after(this.$adscapeContainer);
+      this.$adscapeInner = $('<a class="ad-adscape" href="' + this.config.clickTrack + this.config.clickTag + '" target="_blank"></a>').appendTo(this.$adscapeContainer);
       return this;
     },
     init: function(){
       var root = this;
 
-      this.clean().stylePageContainer().addSkin().stylePushdownInner().addMessaging().addCloseExpButtons();
+      this.clean().stylePageContainer().addSkin().styleAdscapeInner().addMessaging().addCloseExpButtons();
 
-      if(this.config.fullWidthColPushdown){
-        this.styleFullWidthPushdownContainer();
+      if(this.config.fullWidthColAdscape){
+        this.stylefullWidthColAdscapeContainer();
       }
       if(this.config.auto){
         this.autoExpTimer = setTimeout(function(){
@@ -84,22 +86,22 @@ wpAd.Adscape = (function($){
       }
     },
     expand: function(clicked){
-      if(!this.config.fullWidthColPushdown){
-        this.styleFullWidthPushdownContainer();
+      if(!this.config.fullWidthColAdscape){
+        this.stylefullWidthColAdscapeContainer();
       }
 
       var root = this;
       var callback = function(){
-        root.$pushdownContainer.removeClass('collapsed expanded');
-        root.$pushdownContainer.addClass('expanded');
+        root.$adscapeContainer.removeClass('collapsed expanded');
+        root.$adscapeContainer.addClass('expanded');
       };
 
       if(this.cssTransitions){
-        if(!this.$pushdownInner.hasClass('ad-transition-height')){
-          this.$pushdownInner.addClass('ad-transition-height');
+        if(!this.$adscapeInner.hasClass('ad-transition-height')){
+          this.$adscapeInner.addClass('ad-transition-height');
         }
 
-        this.$pushdownInner.css({
+        this.$adscapeInner.css({
           height: this.config.expHeight
         });
 
@@ -108,7 +110,7 @@ wpAd.Adscape = (function($){
         callback();
 
       } else {
-        this.$pushdownInner.stop(true,true).animate({
+        this.$adscapeInner.stop(true,true).animate({
           height: this.config.expHeight
         }, this.config.animSpeed, callback);
       }
@@ -122,8 +124,8 @@ wpAd.Adscape = (function($){
 
     },
     clean: function(){
-      this.styleDefaultPushdownContainer();
-      this.$pushdownInner.empty();
+      this.styleDefaultAdscapeContainer();
+      this.$adscapeInner.empty();
       return this;
     },
     addSkin: function(){
@@ -142,26 +144,26 @@ wpAd.Adscape = (function($){
       this.$pageContainer.css(this.config.pageStyleOverrides);
       return this;
     },
-    styleDefaultPushdownContainer: function(){
-      this.$pushdownContainer.css({
+    styleDefaultAdscapeContainer: function(){
+      this.$adscapeContainer.css({
         width: '',
         marginLeft: ''
       });
       return this;
     },
-    styleFullWidthPushdownContainer: function(){
+    stylefullWidthColAdscapeContainer: function(){
       var pageWidth = this.$pageContainer.outerWidth();
-      var offsetLeft = (pageWidth - this.$pushdownContainer.outerWidth()) / 2;
+      var offsetLeft = (pageWidth - this.$adscapeContainer.outerWidth()) / 2;
 
-      this.$pushdownContainer.css({
+      this.$adscapeContainer.css({
         width: pageWidth + 'px',
         marginLeft: (0 - offsetLeft) + 'px'
       });
 
       return this;
     },
-    stylePushdownInner: function(){
-      this.$pushdownInner.css({
+    styleAdscapeInner: function(){
+      this.$adscapeInner.css({
         height: this.config.colHeight,
         background: this.config.bodyBgColor + ' url(' + this.config.imageURL + ') no-repeat center top fixed'
       });
@@ -171,12 +173,12 @@ wpAd.Adscape = (function($){
       if(this.config.collapsedMessageHTML){
         this.$collapsedMessage = $('<div class="message collapsed">' + this.config.collapsedMessageHTML + '</div>')
           .css(this.config.collapsedMessageCSS)
-          .appendTo(this.$pushdownInner);
+          .appendTo(this.$adscapeInner);
       }
       if(this.config.expandedMessageHTML){
         this.$expandedMessage = $('<div class="message expanded">' + this.config.expandedMessageHTML + '</div>')
           .css(this.config.expandedMessageCSS)
-          .appendTo(this.$pushdownInner);
+          .appendTo(this.$adscapeInner);
       }
       return this;
     },
@@ -191,7 +193,7 @@ wpAd.Adscape = (function($){
         root.expand(true);
       });
 
-      this.$pushdownContainer.append(this.$closeButton).append(this.$expandButton);
+      this.$adscapeContainer.append(this.$closeButton).append(this.$expandButton);
       return this;
     },
     setCloseTimer: function(){
@@ -204,25 +206,25 @@ wpAd.Adscape = (function($){
       var root = this;
 
       var callback = function(){
-        if(!root.config.fullWidthColPushdown){
-          root.styleDefaultPushdownContainer();
+        if(!root.config.fullWidthColAdscape){
+          root.styleDefaultAdscapeContainer();
         }
 
-        root.$pushdownContainer.removeClass('collapsed expanded');
-        root.$pushdownContainer.addClass('collapsed');
+        root.$adscapeContainer.removeClass('collapsed expanded');
+        root.$adscapeContainer.addClass('collapsed');
       };
 
       clearTimeout(this.closeTimer);
 
       if(this.cssTransitions){
-        this.$pushdownInner.css({
+        this.$adscapeInner.css({
           height: this.config.colHeight
         });
 
         setTimeout(callback, this.config.animSpeed);
 
       } else {
-        this.$pushdownInner.stop(true, true).animate({
+        this.$adscapeInner.stop(true, true).animate({
           height: this.config.colHeight
         }, this.config.animSpeed, callback);
       }
@@ -243,7 +245,7 @@ wpAd.Adscape = (function($){
       }).css({
         border: '0',
         display: 'none'
-      }).appendTo(this.$pushdownContainer);
+      }).appendTo(this.$adscapeContainer);
     }
   };
 

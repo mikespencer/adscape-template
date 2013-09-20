@@ -100,7 +100,7 @@ module.exports = function (grunt) {
               autoExpDelay: '[%AutoExpandDelay%]',
               expandLanguage: '[%ExpandLanguage%]',
               closeLanguage: '[%CloseLanguage%]',
-              fullWidthColPushdown: '[%FullWidthCollapsedPushdown%]',
+              fullWidthColAdscape: '[%FullWidthCollapsedPushdown%]',
 
               collapsedMessageHTML: '[%CollapsedMessageHTML%]',
               collapsedMessageCSS: '[%CollapsedMessageCSS%]',
@@ -112,7 +112,7 @@ module.exports = function (grunt) {
               trackCloseClick: '[%3rdPartyCollapseClickPixel%]',
 
               pageContainer: '[%PageContainerSelector%]',
-              pushdownContainer: '[%PushdownContainerSelector%]',
+              adscapeContainer: '[%PushdownContainerSelector%]',
               pageStyleOverrides: '[%PageStyleOverrides%]',
               animSpeed: '[%AnimationSpeedJS%]',
               JSOverrides: '[%JSOverrides%]'
@@ -147,7 +147,7 @@ module.exports = function (grunt) {
               autoExpDelay: 1000,
               expandLanguage: 'Click to Expand',
               closeLanguage: 'Close [x]',
-              fullWidthColPushdown: true,
+              fullWidthColAdscape: true,
 
               collapsedMessageHTML: 'Collapsed Message Here',
               collapsedMessageCSS:
@@ -174,7 +174,7 @@ module.exports = function (grunt) {
               trackCloseClick: '',
 
               pageContainer: '#shell',
-              pushdownContainer: '#slug_pushdown',
+              adscapeContainer: '#slug_pushdown',
               pageStyleOverrides: '',
               animSpeed: 500,
               JSOverrides: ''
