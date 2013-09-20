@@ -15,7 +15,7 @@
 
     $(function(){
 
-      $('head').append('<link rel="stylesheet" type="text/css" href="http://css.washingtonpost.com/wp-srv/ad/skin-window/dist/css/style.min.css" />');
+      $('head').append('<link rel="stylesheet" type="text/css" href="http://css.washingtonpost.com/wp-srv/ad/public/skin-window/dist/css/style.min.css" />');
 
       $.ajax({
         cache: true,
@@ -28,7 +28,7 @@
         },
         success: init,
         timeout: 3000,
-        url: 'http://js.washingtonpost.com/wp-srv/ad/skin-window/dist/js/main.min.js'
+        url: 'http://js.washingtonpost.com/wp-srv/ad/public/skin-window/dist/js/main.min.js'
       });
 
       function init(){
