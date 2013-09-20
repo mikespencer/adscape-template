@@ -1,37 +1,37 @@
 /* line 8, ../sass/style.sass */
-.ad-skin-window-wrap {
+.ad-adscape-wrap {
   position: relative !important;
   overflow: hidden;
   font-family: helvetica, arial, sans-serif;
   font-size: 14px;
 }
 /* line 14, ../sass/style.sass */
-.ad-skin-window-wrap .message.expanded, .ad-skin-window-wrap .message.collapsed {
+.ad-adscape-wrap .message.expanded, .ad-adscape-wrap .message.collapsed {
   display: none;
 }
 /* line 18, ../sass/style.sass */
-.ad-skin-window-wrap.expanded .ad-btn.collapse {
+.ad-adscape-wrap.expanded .ad-btn.collapse {
   display: inline !important;
 }
 /* line 20, ../sass/style.sass */
-.ad-skin-window-wrap.expanded .message.expanded {
+.ad-adscape-wrap.expanded .message.expanded {
   display: inherit;
 }
 /* line 24, ../sass/style.sass */
-.ad-skin-window-wrap.collapsed .ad-btn.expand {
+.ad-adscape-wrap.collapsed .ad-btn.expand {
   display: inline !important;
 }
 /* line 26, ../sass/style.sass */
-.ad-skin-window-wrap.collapsed .message.collapsed {
+.ad-adscape-wrap.collapsed .message.collapsed {
   display: inherit;
 }
 /* line 29, ../sass/style.sass */
-.ad-skin-window-wrap .ad-skin-window {
+.ad-adscape-wrap .ad-adscape {
   position: relative;
   display: block;
 }
 /* line 33, ../sass/style.sass */
-.ad-skin-window-wrap .ad-btn {
+.ad-adscape-wrap .ad-btn {
   display: none;
   padding: 10px;
   font-size: 12px;
@@ -51,7 +51,7 @@
   user-select: none;
 }
 /* line 52, ../sass/style.sass */
-.ad-skin-window-wrap .ad-transition-height {
+.ad-adscape-wrap .ad-transition-height {
   -webkit-transition-property: height;
   -moz-transition-property: height;
   -o-transition-property: height;

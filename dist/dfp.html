@@ -1,4 +1,4 @@
-<!-- AD ID: %eaid! --><!-- skin-window-template -->
+<!-- AD ID: %eaid! --><!-- adscape-template -->
 
 
 
@@ -15,7 +15,7 @@
 
     $(function(){
 
-      $('head').append('<link rel="stylesheet" type="text/css" href="http://css.washingtonpost.com/wp-srv/ad/public/skin-window/dist/css/style.min.css" />');
+      $('head').append('<link rel="stylesheet" type="text/css" href="http://css.washingtonpost.com/wp-srv/ad/public/adscape-template/dist/css/style.min.css" />');
 
       $.ajax({
         cache: true,
@@ -28,11 +28,11 @@
         },
         success: init,
         timeout: 3000,
-        url: 'http://js.washingtonpost.com/wp-srv/ad/public/skin-window/dist/js/main.min.js'
+        url: 'http://js.washingtonpost.com/wp-srv/ad/public/adscape-template/dist/js/main.min.js'
       });
 
       function init(){
-        wpAd.skinWindowConfig = {
+        wpAd.adscapeConfig = {
           adid: parseInt('%eaid!', 10) || false,
           imageURL: '[%BackgroundImage%]',
           clickTracker: '%%CLICK_URL_UNESC%%',
@@ -84,7 +84,7 @@
 
         [%JSOverrides%]
 
-        wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
+        wpAd.adscape = new wpAd.Adscape(wpAd.adscapeConfig);
       }
 
     });

@@ -10,7 +10,7 @@
 
   <div id="shell" style="background-color:#eee;width:1000px;margin:0 auto;padding:10px">
     <h1>Some title</h1>
-    <div id="slug_pushdown" class="ad-skin-window"></div>
+    <div id="slug_pushdown"></div>
     <div style="padding-top:30px;">
       <p>Curabitur blandit tempus porttitor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
 
@@ -42,7 +42,7 @@
 
       $(function(){
 
-        wpAd.skinWindowConfig = {
+        wpAd.adscapeConfig = {
           adid: parseInt('%eaid!', 10) || false,
           imageURL: '../dist/img/bg.jpg',
           clickTracker: '',
@@ -70,7 +70,7 @@
           animSpeed: 500
         };
 
-        wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
+        wpAd.adscape = new wpAd.Adscape(wpAd.adscapeConfig);
 
       });
 

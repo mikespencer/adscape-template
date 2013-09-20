@@ -77,13 +77,13 @@ module.exports = function (grunt) {
       dist: {
         options: {
           banner: '<!-- AD ID: %eaid! -->' +
-            '<!-- skin-window-template -->' +
+            '<!-- adscape-template -->' +
             '\n\n',
           process: {
             data: {
               urls: {
-                css: 'http://css.washingtonpost.com/wp-srv/ad/public/skin-window/dist/css/style.min.css',
-                js: 'http://js.washingtonpost.com/wp-srv/ad/public/skin-window/dist/js/main.min.js'
+                css: 'http://css.washingtonpost.com/wp-srv/ad/public/adscape-template/dist/css/style.min.css',
+                js: 'http://js.washingtonpost.com/wp-srv/ad/public/adscape-template/dist/js/main.min.js'
               },
               adid: parseInt('%eaid!', 10) || false,
               imageURL: '[%BackgroundImage%]',
@@ -308,7 +308,7 @@ module.exports = function (grunt) {
     absolute: {
       dist: {
         src: '<%= yeoman.dist %>/dfp.html',
-        path: 'wp-srv/ad/public/skin-window/dist',
+        path: 'wp-srv/ad/public/adscape-template/dist',
         www: 'http://www.washingtonpost.com',
         css: 'http://css.washingtonpost.com',
         img: 'http://img.wpdigital.net',
@@ -370,7 +370,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', ['qunit']);
 
   grunt.registerTask('build', [
-    //'jshint:src',
+    'jshint:src',
     'clean:dist',
     'concurrent:dist',
     //'useminPrepare',
@@ -384,7 +384,8 @@ module.exports = function (grunt) {
     //'usemin',
     'concat:dist',
     'concat:dev',
-    'absolute:dist'
+    'absolute:dist',
+    'test'
   ]);
 
   grunt.registerTask('server', [
@@ -400,7 +401,7 @@ module.exports = function (grunt) {
   /*
   grunt.registerTask('push', 'Copy files to production build', function(target){
     if(target === 'prod'){
-      var prod = '~/wp-ad-scripts/skin-window/dist';
+      var prod = '~/wp-ad-scripts/adscape-template/dist';
       //clean out old files
       var preClean = 'rm -rf ' + prod;
       //copy the ./dist dir
@@ -408,7 +409,7 @@ module.exports = function (grunt) {
       //remove unnecessary files
       var postClean = 'rm -rf ' + prod + '/*.html ' + prod + '/img';
 
-      console.log('Copying ./dist to ~/wp-ad-scripts/skin-window/dist');
+      console.log('Copying ./dist to ~/wp-ad-scripts/adscape-template/dist');
 
       exec([preClean, copy, postClean].join(' && '));
     }

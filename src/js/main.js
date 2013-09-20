@@ -1,5 +1,5 @@
 var wpAd = wpAd || {};
-wpAd.SkinWindow = (function($){
+wpAd.Adscape = (function($){
 
   'use strict';
 
@@ -39,7 +39,7 @@ wpAd.SkinWindow = (function($){
     closeLanguage: 'Close [x]'
   };
 
-  function SkinWindow(config){
+  function Adscape(config){
     this.configure(config).setPageElements();
     this.cssTransitions = $('html').hasClass('wpad-csstransitions');
     this.init();
@@ -47,7 +47,7 @@ wpAd.SkinWindow = (function($){
     return this;
   }
 
-  SkinWindow.prototype = {
+  Adscape.prototype = {
     configure: function(config){
       var currentConfig = this.config || defaults;
       this.config = $.extend(true, currentConfig, config);
@@ -55,8 +55,8 @@ wpAd.SkinWindow = (function($){
     },
     setPageElements: function(){
       this.$pageContainer = $(this.config.pageContainer);
-      this.$pushdownContainer = $(this.config.pushdownContainer).empty().addClass('ad-skin-window-wrap');
-      this.$pushdownInner = $('<a class="ad-skin-window" href="' + this.config.clickTrack + this.config.clickTag + '" target="_blank"></a>').appendTo(this.$pushdownContainer);
+      this.$pushdownContainer = $(this.config.pushdownContainer).empty().addClass('ad-adscape-wrap');
+      this.$pushdownInner = $('<a class="ad-adscape" href="' + this.config.clickTrack + this.config.clickTag + '" target="_blank"></a>').appendTo(this.$pushdownContainer);
       return this;
     },
     init: function(){
@@ -247,6 +247,6 @@ wpAd.SkinWindow = (function($){
     }
   };
 
-  return SkinWindow;
+  return Adscape;
 
 })(window.jQuery);

@@ -58,7 +58,7 @@
       });
 
       function init(){
-        wpAd.skinWindowConfig = {
+        wpAd.adscapeConfig = {
           adid: parseInt('%eaid!', 10) || false,
           imageURL: 'img/bg.jpg',
           clickTracker: '',
@@ -110,7 +110,7 @@
 
         
 
-        wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
+        wpAd.adscape = new wpAd.Adscape(wpAd.adscapeConfig);
       }
 
     });
