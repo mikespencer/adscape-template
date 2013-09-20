@@ -1,0 +1,93 @@
+<!-- AD ID: %eaid! --><!-- skin-window-template -->
+
+
+
+<script>
+
+  var wpAd = wpAd || {};
+
+  (function($){
+    'use strict';
+
+    if(!$){return;}
+
+    //var inFIF = window.self != window.top && window.parent && window.parent.document || false;
+
+    $(function(){
+
+      $('head').append('<link rel="stylesheet" type="text/css" href="http://css.washingtonpost.com/wp-srv/ad/skin-window/dist/css/style.min.css" />');
+
+      $.ajax({
+        cache: true,
+        crossDomain: true,
+        dataType: 'script',
+        error: function(e){
+          if(window.console){
+            console.log(e);
+          }
+        },
+        success: init,
+        timeout: 3000,
+        url: 'http://js.washingtonpost.com/wp-srv/ad/skin-window/dist/js/main.min.js'
+      });
+
+      function init(){
+        wpAd.skinWindowConfig = {
+          adid: parseInt('%eaid!', 10) || false,
+          imageURL: '[%BackgroundImage%]',
+          clickTracker: '%%CLICK_URL_UNESC%%',
+          clickTrackerEsc: '%%CLICK_URL_ESC%%',
+          clickTag: '%%DEST_URL%%',
+          colHeight: '[%CollapsedHeight%]px',
+          expHeight: '[%ExpandedHeight%]px',
+          skinTopMargin: '[%SkinTopMargin%]px',
+          timeOpen: [%AutoTimeOpen%],
+          auto: [%Auto%],
+          bodyBgColor: '[%BodyBackgroundColor%]',
+
+          collapsedMessageHTML: 'Collapsed Message Here',
+          collapsedMessageCSS: {
+            textShadow: '2px 2px #000',
+            position: 'absolute',
+            bottom: '5px',
+            left: '5px',
+            fontSize: '36px',
+            color: '#fff',
+            lineHeight: '1'
+          },
+
+          expandedMessageHTML: 'Expanded Message Here',
+          expandedMessageCSS: {
+            textShadow: '2px 2px #000',
+            position: 'absolute',
+            bottom: '5px',
+            left: '5px',
+            fontSize: '36px',
+            color: '#fff',
+            lineHeight: '1'
+          },
+
+          autoExpDelay: [%AutoExpandDelay%],
+          expandLanguage: '[%ExpandLanguage%]',
+          closeLanguage: '[%CloseLanguage%]',
+          fullWidthColPushdown: [%FullWidthCollapsedPushdown%],
+
+          impressionPixels: ['[%3rdPartyImpressionPixel%]'],
+          trackExpClick: ['[%3rdPartyExpandClickPixel%]'],
+          trackCloseClick: ['[%3rdPartyCollapseClickPixel%]'],
+
+          pageContainer: '[%PageContainerSelector%]',
+          pushdownContainer: '[%PushdownContainerSelector%]',
+          pageStyleOverrides: {[%PageStyleOverrides%]},
+          animSpeed: [%AnimationSpeedJS%]
+        };
+
+        [%JSOverrides%]
+
+        wpAd.skinWindow = new wpAd.SkinWindow(wpAd.skinWindowConfig);
+      }
+
+    });
+
+  })(window.jQuery);
+</script>
