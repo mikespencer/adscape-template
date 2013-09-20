@@ -33,7 +33,7 @@ wpAd.Adscape = (function($){
     expandedMessageCSS: {},
     skinTopMargin: '30px',
     pageStyleOverrides: {},
-    fullWidthColAdscape: false,
+    fullWidthColAdscape: true,
     animSpeed: 500,
     expandLanguage: 'Click to Expand',
     closeLanguage: 'Close [x]'
