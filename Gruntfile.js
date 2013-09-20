@@ -102,6 +102,11 @@ module.exports = function (grunt) {
               closeLanguage: '[%CloseLanguage%]',
               fullWidthColPushdown: '[%FullWidthCollapsedPushdown%]',
 
+              collapsedMessageHTML: '[%CollapsedMessageHTML%]',
+              collapsedMessageCSS: '[%CollapsedMessageCSS%]',
+              expandedMessageHTML: '[%ExpandedMessageHTML%]',
+              expandedMessageCSS: '[%ExpandedMessageCSS%]',
+
               impressionPixels: ['[%3rdPartyImpressionPixel%]'],
               trackExpClick: '[%3rdPartyExpandClickPixel%]',
               trackCloseClick: '[%3rdPartyCollapseClickPixel%]',
@@ -143,6 +148,26 @@ module.exports = function (grunt) {
               expandLanguage: 'Click to Expand',
               closeLanguage: 'Close [x]',
               fullWidthColPushdown: true,
+
+              collapsedMessageHTML: 'Collapsed Message Here',
+              collapsedMessageCSS:
+                "textShadow: '2px 2px #000'," +
+                "position: 'absolute'," +
+                "bottom: '5px'," +
+                "left: '5px'," +
+                "fontSize: '36px'," +
+                "color: '#fff'," +
+                "lineHeight: '1'",
+
+              expandedMessageHTML: 'Expanded Message Here',
+              expandedMessageCSS:
+                "textShadow: '2px 2px #000'," +
+                "position: 'absolute'," +
+                "bottom: '5px'," +
+                "left: '5px'," +
+                "fontSize: '36px'," +
+                "color: '#fff'," +
+                "lineHeight: '1'",
 
               impressionPixels: '',
               trackExpClick: '',
