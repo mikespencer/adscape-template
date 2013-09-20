@@ -100,7 +100,7 @@ module.exports = function (grunt) {
               autoExpDelay: '[%AutoExpandDelay%]',
               expandLanguage: '[%ExpandLanguage%]',
               closeLanguage: '[%CloseLanguage%]',
-              fullWidthColAdscape: '[%FullWidthCollapsedPushdown%]',
+              fullWidthColAdscape: '[%fullWidthCollapsedAdscape%]',
 
               collapsedMessageHTML: '[%CollapsedMessageHTML%]',
               collapsedMessageCSS: '[%CollapsedMessageCSS%]',
@@ -112,7 +112,7 @@ module.exports = function (grunt) {
               trackCloseClick: '[%3rdPartyCollapseClickPixel%]',
 
               pageContainer: '[%PageContainerSelector%]',
-              adscapeContainer: '[%PushdownContainerSelector%]',
+              adscapeContainer: '[%TargetContainerSelector%]',
               pageStyleOverrides: '[%PageStyleOverrides%]',
               animSpeed: '[%AnimationSpeedJS%]',
               JSOverrides: '[%JSOverrides%]'
