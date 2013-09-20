@@ -4,9 +4,27 @@
 .ad-skin-window-wrap
   @import "compass/reset/utilities"
 
+
 .ad-skin-window-wrap
   position: relative !important
   overflow: hidden
+  font-family: helvetica, arial, sans-serif
+  font-size: 14px
+
+  .message.expanded, .message.collapsed
+    display: none
+
+  &.expanded
+    .ad-btn.collapse
+      display: inline !important
+    .message.expanded
+      display: inherit
+
+  &.collapsed
+    .ad-btn.expand
+      display: inline !important
+    .message.collapsed
+      display: inherit
 
   .ad-skin-window
     position: relative

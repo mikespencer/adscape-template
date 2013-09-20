@@ -27,6 +27,10 @@ wpAd.SkinWindow = (function($){
     expHeight: '468px',
     colHeight: '60px',
     bodyBgColor: '#ffffff',
+    collapsedMessageHTML: '',
+    collapsedMessageCSS: {},
+    expandedMessageHTML: '',
+    expandedMessageCSS: {},
     skinTopMargin: '30px',
     pageStyleOverrides: {},
     fullWidthColPushdown: false,
@@ -36,7 +40,7 @@ wpAd.SkinWindow = (function($){
   };
 
   function SkinWindow(config){
-    this.configure(config).getPageElements();
+    this.configure(config).setPageElements();
     this.cssTransitions = $('html').hasClass('wpad-csstransitions');
     this.init();
 
@@ -49,17 +53,16 @@ wpAd.SkinWindow = (function($){
       this.config = $.extend(true, currentConfig, config);
       return this;
     },
-    getPageElements: function(){
+    setPageElements: function(){
       this.$pageContainer = $(this.config.pageContainer);
       this.$pushdownContainer = $(this.config.pushdownContainer).empty().addClass('ad-skin-window-wrap');
       this.$pushdownInner = $('<a class="ad-skin-window" href="' + this.config.clickTrack + this.config.clickTag + '" target="_blank"></a>').appendTo(this.$pushdownContainer);
-
       return this;
     },
     init: function(){
       var root = this;
 
-      this.clean().stylePageContainer().addSkin().stylePushdownInner().addCloseExpButtons();
+      this.clean().stylePageContainer().addSkin().stylePushdownInner().addMessaging().addCloseExpButtons();
 
       if(this.config.fullWidthColPushdown){
         this.styleFullWidthPushdownContainer();
@@ -85,6 +88,12 @@ wpAd.SkinWindow = (function($){
         this.styleFullWidthPushdownContainer();
       }
 
+      var root = this;
+      var callback = function(){
+        root.$pushdownContainer.removeClass('collapsed expanded');
+        root.$pushdownContainer.addClass('expanded');
+      };
+
       if(this.cssTransitions){
         if(!this.$pushdownInner.hasClass('ad-transition-height')){
           this.$pushdownInner.addClass('ad-transition-height');
@@ -93,10 +102,15 @@ wpAd.SkinWindow = (function($){
         this.$pushdownInner.css({
           height: this.config.expHeight
         });
+
+        //setTimeout(callback, this.config.animSpeed);
+
+        callback();
+
       } else {
         this.$pushdownInner.stop(true,true).animate({
           height: this.config.expHeight
-        }, this.config.animSpeed);
+        }, this.config.animSpeed, callback);
       }
 
       var l = this.config.trackExpClick.length;
@@ -106,8 +120,6 @@ wpAd.SkinWindow = (function($){
         }
       }
 
-      this.$expandButton.hide(0);
-      this.$closeButton.show(0);
     },
     clean: function(){
       this.styleDefaultPushdownContainer();
@@ -155,14 +167,27 @@ wpAd.SkinWindow = (function($){
       });
       return this;
     },
+    addMessaging: function(){
+      if(this.config.collapsedMessageHTML){
+        this.$collapsedMessage = $('<div class="message collapsed">' + this.config.collapsedMessageHTML + '</div>')
+          .css(this.config.collapsedMessageCSS)
+          .appendTo(this.$pushdownInner);
+      }
+      if(this.config.expandedMessageHTML){
+        this.$expandedMessage = $('<div class="message expanded">' + this.config.expandedMessageHTML + '</div>')
+          .css(this.config.expandedMessageCSS)
+          .appendTo(this.$pushdownInner);
+      }
+      return this;
+    },
     addCloseExpButtons: function(){
       var root = this;
 
-      this.$closeButton = $('<span class="ad-btn">' + this.config.closeLanguage + '</span>').on('click', function(){
+      this.$closeButton = $('<span class="ad-btn collapse">' + this.config.closeLanguage + '</span>').on('click', function(){
         root.collapse(true);
       });
 
-      this.$expandButton = $('<span class="ad-btn">' + this.config.expandLanguage + '</span>').on('click', function(){
+      this.$expandButton = $('<span class="ad-btn expand">' + this.config.expandLanguage + '</span>').on('click', function(){
         root.expand(true);
       });
 
@@ -182,8 +207,9 @@ wpAd.SkinWindow = (function($){
         if(!root.config.fullWidthColPushdown){
           root.styleDefaultPushdownContainer();
         }
-        root.$closeButton.hide(0);
-        root.$expandButton.show(0);
+
+        root.$pushdownContainer.removeClass('collapsed expanded');
+        root.$pushdownContainer.addClass('collapsed');
       };
 
       clearTimeout(this.closeTimer);

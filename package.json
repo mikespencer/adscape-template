@@ -1,7 +1,7 @@
 {
-  "name": "skin-window-template",
-  "title": "skin-window-template",
-  "version": "0.0.0",
+  "name": "adscape-template",
+  "title": "adscape-template",
+  "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
