@@ -31,6 +31,8 @@ wpAd.Adscape = (function($){
     collapsedMessageCSS: {},
     expandedMessageHTML: '',
     expandedMessageCSS: {},
+    closeButtonCSSOverrides: {},
+    expandButtonCSSOverrides: {},
     skinTopMargin: '30px',
     pageStyleOverrides: {},
     fullWidthColAdscape: true,
@@ -187,11 +189,11 @@ wpAd.Adscape = (function($){
 
       this.$closeButton = $('<span class="ad-btn collapse">' + this.config.closeLanguage + '</span>').on('click', function(){
         root.collapse(true);
-      });
+      }).css(this.config.closeButtonCSSOverrides);
 
       this.$expandButton = $('<span class="ad-btn expand">' + this.config.expandLanguage + '</span>').on('click', function(){
         root.expand(true);
-      });
+      }).css(this.config.expandButtonCSSOverrides);
 
       this.$adscapeContainer.append(this.$closeButton).append(this.$expandButton);
       return this;

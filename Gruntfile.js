@@ -107,6 +107,9 @@ module.exports = function (grunt) {
               expandedMessageHTML: '[%ExpandedMessageHTML%]',
               expandedMessageCSS: '[%ExpandedMessageCSS%]',
 
+              closeButtonCSSOverrides: '[%CloseButtonCSSOverrides%]',
+              expandButtonCSSOverrides: '[%ExpandButtonCSSOverrides%]',
+
               impressionPixels: ['[%3rdPartyImpressionPixel%]'],
               trackExpClick: '[%3rdPartyExpandClickPixel%]',
               trackCloseClick: '[%3rdPartyCollapseClickPixel%]',
@@ -158,6 +161,9 @@ module.exports = function (grunt) {
                 "fontSize: '36px'," +
                 "color: '#fff'," +
                 "lineHeight: '1'",
+
+              closeButtonCSSOverrides: '',
+              expandButtonCSSOverrides: '',
 
               expandedMessageHTML: 'Expanded Message Here',
               expandedMessageCSS:
@@ -409,8 +415,8 @@ module.exports = function (grunt) {
     //'usemin',
     'concat:dist',
     'concat:dev',
-    'absolute:dist',
-    'test'
+    'absolute:dist'
+    //'test'
   ]);
 
   grunt.registerTask('server', [
